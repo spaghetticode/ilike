@@ -6,7 +6,7 @@ Gem::Specification.new do |gem|
   gem.email         = ["andrea@spaghetticode.it"]
   gem.description   = %q{easy way to match strings with active record}
   gem.summary       = %q{easy way to match strings with active record}
-  gem.homepage      = "https://github.com/spaghetticode/liker"
+  gem.homepage      = "https://github.com/spaghetticode/ilike"
 
   gem.files         = `git ls-files`.split($\)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
