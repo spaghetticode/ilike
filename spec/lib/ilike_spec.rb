@@ -25,7 +25,6 @@ describe Ilike do
   end
 
   it 'finds records that end with the requested string' do
-    binding.pry
     Product.ilike(:name => '%pasta').should == [@pasta]
   end
 

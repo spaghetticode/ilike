@@ -8,9 +8,21 @@ write code that doesn't depend explicitly on your db adapter:
 ```ruby
   class Product < ActiveRecord::Base; end
 
-  Product.create(:name => 'Mozzarella Cheese', :price => 1.50)
-  Product.ilike(:name => '%cheese')
-  => [#<Product id: 2, name: "Mozzarella Cheese", price: #<BigDecimal:7fdeab856c90,'0.15E1',18(18)>>]
+  Product.create(:name => 'Pinot wine', :origin => 'France', :price => 13.50)
+  Product.create(:name => 'Barolo wine', :origin => 'Italy', :price => 12.50)
+
+  # basic search:
+  Product.ilike(:name => '%wine')
+  # => [#<Product id: 2, name: "Pinot wine", origin: "France", price: #<BigDecimal:105b70880,'0.135E2',18(18)>>,
+        #<Product id: 3, name: "Barolo wine", origin: "Italy", price: #<BigDecimal:105b705d8,'0.125E2',18(18)>>]
+
+  # search on multiple fields:
+  Product.ilike(:name => '%wine%', :origin => '%Ita%')
+  # => [#<Product id: 3, name: "Barolo wine", origin: "Italy", price: #<BigDecimal:1059677a0,'0.125E2',18(18)>>]
+
+  # search with multiple keywords on the same field:
+  Product.ilike(:name => ['%wine', '%barolo%')
+  # => [#<Product id: 3, name: "Barolo wine", origin: "Italy", price: #<BigDecimal:1059fe998,'0.125E2',18(18)>>]
 ```
 
 
@@ -27,6 +39,7 @@ And then execute:
 Or install it yourself as:
 
     $ gem install liker
+
 
 ## Contributing
 
