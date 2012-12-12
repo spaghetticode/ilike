@@ -40,12 +40,12 @@ describe Ilike do
     Product.ilike(:name => '%wine', :origin => '%fra%').should == [@pinot]
   end
 
-  it 'returns expected sql' do
-    sql = 'SELECT "products".* FROM "products"  WHERE ("products"."name" LIKE \'%chianti%\' AND "products"."name" LIKE \'%wine%\')'
-    Product.ilike(:name => ['%chianti%', '%wine%']).to_sql.should == sql
-  end
-
   it 'searches with all options' do
     Product.ilike(:name => ['%wine%', '%barolo%']).should == [@barolo]
+  end
+
+  it 'builds the expected sql' do
+    sql = 'SELECT "products".* FROM "products"  WHERE ("products"."name" LIKE \'%wine%\' AND "products"."name" LIKE \'%barolo%\')'
+    Product.ilike(:name => ['%wine%', '%barolo%']).to_sql.should == sql
   end
 end
