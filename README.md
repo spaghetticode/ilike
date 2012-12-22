@@ -21,7 +21,7 @@ write code that doesn't depend explicitly on your db adapter:
   # => [#<Product id: 3, name: "Barolo wine", origin: "Italy", price: #<BigDecimal:1059677a0,'0.125E2',18(18)>>]
 
   # search with multiple keywords on the same field:
-  Product.ilike(:name => ['%wine', '%barolo%')
+  Product.ilike(:name => ['%wine', '%barolo%'])
   # => [#<Product id: 3, name: "Barolo wine", origin: "Italy", price: #<BigDecimal:1059fe998,'0.125E2',18(18)>>]
 ```
 
