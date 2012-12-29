@@ -38,7 +38,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install liker
+    $ gem install ilike
 
 
 ## Contributing
